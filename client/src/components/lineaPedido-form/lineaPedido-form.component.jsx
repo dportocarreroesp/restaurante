@@ -11,6 +11,7 @@ class LineaPedidoForm extends React.Component {
 
     this.state = {
       id: '',
+      id_Pedido: '',
       id_Producto: '',
       cantidad: 0
     };

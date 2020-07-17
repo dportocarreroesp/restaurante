@@ -109,6 +109,7 @@ class EmpleadoForm extends React.Component {
             ]}
             label = 'Sucursal'
             required
+            
           />
           <div className='buttons'>
             <CustomButton type='submit'> Registrar empleado </CustomButton>
