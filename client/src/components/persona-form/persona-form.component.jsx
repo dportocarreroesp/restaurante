@@ -1,6 +1,6 @@
 import React from 'react';
-
 import FormInput from '../form-input/form-input.component';
+import FormSelect from '../form-select/form-select.component';
 import CustomButton from '../custom-button/custom-button.component';
 
 import './persona-form.styles.scss';
@@ -11,9 +11,16 @@ class PersonaForm extends React.Component {
 
     this.state = {
       nombres: '',
-      apellidos: '',
-      fecha_nacimiento: '',
-      domicilio: ''
+      apellidoPaterno: '',
+      apellidoMaterno: '',
+      fechaNacimiento: '',
+      correoElectronico: '',
+      //telefonos: [],
+      //companias: [],
+      telefono: '',
+      compania: '',
+      tipoDocumento: '',
+      documento: ''
     };
   }
 
@@ -43,9 +50,10 @@ class PersonaForm extends React.Component {
     }))
   }; 
 
-  handleChange = event => {
+  handleChange = async event => {
     const { value, name } = event.target;
-    this.setState({ [name]: value });
+    await this.setState({ [name]: value });
+    console.log(this.state)
   };
 
   render() {
@@ -63,26 +71,71 @@ class PersonaForm extends React.Component {
             required
           />
           <FormInput
-            name='apellidos'
+            name='apellidoPaterno'
             type='text'
             handleChange={this.handleChange}
-            value={this.state.apellidos}
-            label='Apellidos'
+            value={this.state.apellidoPaterno}
+            label='Apellido Paterno'
             required
           />
           <FormInput
-            name='fecha_nacimiento'
+            name='apellidoMaterno'
+            type='text'
+            handleChange={this.handleChange}
+            value={this.state.apellidoMaterno}
+            label='Apellido Materno'
+            required
+          />
+          <FormInput
+            name='fechaNacimiento'
             type='date'
             handleChange={this.handleChange}
-            value={this.state.fecha_nacimiento}
+            value={this.state.fechaNacimiento}
+            required
+          />
+          <FormSelect
+            name='tipoDocumento'
+            handleChange={this.handleChange}
+            value={this.state.tipoDocumento}
+            options={[
+              {value: 'DNI',
+              label: 'DNI'},
+              {value: 'RUC',
+              label: 'RUC'}
+            ]}
+            label='Tipo de documento'
             required
           />
           <FormInput
-            name='domicilio'
+            name='documento'
             type='text'
             handleChange={this.handleChange}
-            value={this.state.domicilio}
-            label='Lugar de su domicilio'
+            value={this.state.documento}
+            label='Documento'
+            required
+          />
+          <FormInput
+            name='correoElectronico'
+            type='text'
+            handleChange={this.handleChange}
+            value={this.state.correoElectronico}
+            label='Correo electrónico'
+            required
+          />
+          <FormInput
+            name='telefono'
+            type='text'
+            handleChange={this.handleChange}
+            value={this.state.telefono}
+            label='Número de teléfono'
+            required
+          />
+          <FormInput
+            name='compania'
+            type='text'
+            handleChange={this.handleChange}
+            value={this.state.compania}
+            label='Compañía del teléfono'
             required
           />
           <div className='buttons'>
