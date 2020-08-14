@@ -2,6 +2,7 @@ import React from 'react';
 import FormInput from '../form-input/form-input.component';
 import FormSelect from '../form-select/form-select.component';
 import CustomButton from '../custom-button/custom-button.component';
+import { connect } from 'react-redux';
 
 import './persona-form.styles.scss';
 
@@ -15,21 +16,20 @@ class PersonaForm extends React.Component {
       apellidoMaterno: '',
       fechaNacimiento: '',
       correoElectronico: '',
-      //telefonos: [],
-      //companias: [],
       telefono: '',
       compania: '',
-      tipoDocumento: '',
-      documento: ''
+      tipoDocumento: 0,
+      documento: '',
+      password: ''
     };
   }
 
   handleSubmit = async event => {
     event.preventDefault();
 
-    const {nombres, apellidos, fecha_nacimiento, domicilio} = this.state;
+    const {nombres, apellidoPaterno, apellidoMaterno, fechaNacimiento, correoElectronico, telefono, compania, tipoDocumento, documento, password} = this.state;
 
-    await fetch('http://localhost:9000/persona', {
+    await fetch('http://localhost:9000/persona/'+this.props.currentUser.sucursal, {
       method: 'POST',
       headers: {
           'Accept': 'application/json',
@@ -37,16 +37,28 @@ class PersonaForm extends React.Component {
       },
       body: JSON.stringify({
           nombres: nombres,
-          apellidos: apellidos,
-          fecha_nacimiento: fecha_nacimiento,
-          domicilio: domicilio
+          apellidoPaterno: apellidoPaterno,
+          apellidoMaterno: apellidoMaterno,
+          fechaNacimiento: fechaNacimiento,
+          correoElectronico: correoElectronico,
+          telefono: telefono,
+          compania: compania,
+          tipoDocumento: tipoDocumento,
+          documento: documento,
+          password: password
       })
     })
     .then(this.setState({
       nombres: '',
-      apellidos: '',
-      fecha_nacimiento: '',
-      domicilio: ''
+      apellidoPaterno: '',
+      apellidoMaterno: '',
+      fechaNacimiento: '',
+      correoElectronico: '',
+      telefono: '',
+      compania: '',
+      tipoDocumento: 1,
+      documento: '',
+      password: ''
     }))
   }; 
 
@@ -98,9 +110,9 @@ class PersonaForm extends React.Component {
             handleChange={this.handleChange}
             value={this.state.tipoDocumento}
             options={[
-              {value: 'DNI',
+              {value: 1,
               label: 'DNI'},
-              {value: 'RUC',
+              {value: 2,
               label: 'RUC'}
             ]}
             label='Tipo de documento'
@@ -147,5 +159,9 @@ class PersonaForm extends React.Component {
   }//Sign in es props.children
 }
 
-export default PersonaForm;
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+})
+
+export default connect(mapStateToProps)(PersonaForm);
 

@@ -63,7 +63,8 @@ class LineaPedidoForm extends React.Component {
             required
           />
           <div className='buttons'>
-            <CustomButton type='submit'> Registrar Pedido </CustomButton>
+            <CustomButton type='submit'> Confirmar </CustomButton>
+            <CustomButton type='button' > Eliminar </CustomButton>
           </div>
         </form>
       </div>

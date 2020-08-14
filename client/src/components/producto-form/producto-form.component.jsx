@@ -13,28 +13,30 @@ class ProductoForm extends React.Component {
       nombre: '',
       precio: '',
       descripcion: '',
-      disponible: '',
-      id_Categoria: '',
-      id_Sucursal: ''
+      disponible: 1,
+      id_Categoria: 1,
+      id_Sucursal: 1
     };
   }
 
   handleSubmit = async event => {
     event.preventDefault();
 
-    const {nombres, apellidos, fecha_nacimiento, domicilio} = this.state;
+    const {nombre, precio, descripcion, disponible, id_Categoria, id_Sucursal} = this.state;
 
-    await fetch('http://localhost:9000/persona', {
+    await fetch('http://localhost:9000/producto', {
       method: 'POST',
       headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-          nombres: nombres,
-          apellidos: apellidos,
-          fecha_nacimiento: fecha_nacimiento,
-          domicilio: domicilio
+          nombre: nombre,
+          precio: precio,
+          descripcion: descripcion,
+          disponible: disponible,
+          id_Categoria: id_Categoria,
+          id_Sucursal: id_Sucursal
       })
     })
     .then(this.setState({
@@ -89,10 +91,10 @@ class ProductoForm extends React.Component {
             handleChange = {this.handleChange}
             options = {[
                 {
-                    value: 0, label:'SI DISPONIBLE'
+                    value: 1, label:'SI DISPONIBLE'
                 },
                 {
-                    value: 1, label:'NO DISPONIBLE'
+                    value: 2, label:'NO DISPONIBLE'
                 }
             ]}
             label = '¿Disponible?'
