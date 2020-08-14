@@ -57,7 +57,7 @@ Como se muestra en la figura primero hemos ingresado al nodo 3 usando
 Una vez dentro hemos creado las tablas y usando `list` vemos que tenemos la base de datos `restaurantenodo3` que es donde guardaremos todos los datos del nodo 3, `restaurantenodo2` que es donde se guardará la réplica del nodo 2 y restaurante.
 Entonces siguiendo esta lógica hacemos lo mismo para el nodo 2 y 4 siguiendo el concepto de la siguiente imágen.
 
-![alt text](https://github.com/khannom/restaurante/blob/master/bdconf6.png)
+![alt text](https://github.com/jfloreshe/INTERDISCIPLINAR/blob/master/bdconf6.png)
 
 ```
 En el nodo 1 se crea restaurantenodo1, restaurantenodo4 y restaurante.
@@ -72,7 +72,7 @@ Una vez dentro ejecutamos el siguiente comando
 #### psql -h \<ip nodo que deseamos acceder\> \[-p \<puerto del nodo\>\] -U \<usuario\> -d \<nombre de la base de datos\> -a -f \<el camino completo al archivo\>
 Ejecutaremos lo anterior para el nodo 1
 
-![alt text](https://github.com/khannom/restaurante/blob/master/bdconf7.png)
+![alt text](https://github.com/jfloreshe/INTERDISCIPLINAR/blob/master/bdconf7.png)
 
 Ahora que sabemos como ejecutar un script desde terminal.
 Realizamos la ejecución de los scripts en el siguiente orden
