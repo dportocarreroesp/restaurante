@@ -1,4 +1,4 @@
-# Restaurante "El Ganso"
+# Restaurante
 ## Introducción
 El presente texto muestra la instalación en el sistema operativo Linux Ubuntu.
 ## Base de Datos Distribuida
